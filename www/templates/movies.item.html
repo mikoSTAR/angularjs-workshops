@@ -1,0 +1,52 @@
+
+<div id="contentMain" class="container movie-content animated">
+  <div class="row">
+    <button ng-click="back()" class="btn btn-primary back-btn">back</button>
+  </div>
+  <div class="row">
+    <div class="col-md-3 pull-left"><img ng-src="{{movie.image_url || 'http://placehold.it/200x285' }}"/></div>
+    <div class="col-md-6 pull-left">
+      <div class="row">
+        <h1 class="col-md-9">{{movie.title}}</h1>
+        <h4 class="col-md-2 release-year">({{movie.release_date}})</h4>
+      </div>
+    </div>
+    <div class="col-md-6 pull-left"><span class="glyphicon glyphicon-time"></span>{{movie.time}} minut</div>
+    <div class="col-md-6 pull-left">
+      <h4>reżyseria: {{movie.director}}</h4>
+    </div>
+    <div class="col-md-6 pull-left">
+      <h3>{{movie.rate}} / 10</h3>
+    </div>
+    <div class="col-md-6 pull-left">
+      <div class="row">
+        <h4 class="col-md-3">twoja ocena: </h4>
+        <h4 ng-show="movie.rate &gt; 0" class="col-md-3">{{movie.rate}}</h4>
+        <h4 ng-hide="movie.rate &gt; 0" class="col-md-3">brak oceny!</h4>
+      </div>
+      <div>
+        <rating ng-model="movie.rate" max="10"></rating>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>{{movie.description}}</h3>
+  </div>
+  <div class="row posts-content">
+    <h3>dyskusja</h3>
+    <div class="row post-form">
+      <form name="post">
+        <input type="text" ng-model="tmp.current_comment" required="required" class="col-md-3"/>
+      </form>
+      <button ng-click="addComment()" ng-disabled="isAddDisabled()" class="col-md-1 btn btn-primary add-post-btn">Dodaj</button>
+    </div>
+    <ul class="posts">
+      <li ng-repeat="comment in movie.comments">
+        <div class="row">
+          <h4 class="col-md-2">Komentarz # {{$index+1}}</h4>
+          <h5 class="post-author">{{comment.user_name}}</h5>
+        </div>{{comment.body}}
+      </li>
+    </ul>
+  </div>
+</div>

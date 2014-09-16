@@ -1,0 +1,65 @@
+li {
+  margin-bottom:10px;
+  box-shadow: 1px 1px 1px 1px #ddd;
+}
+
+.active-row {
+  box-shadow: 1px 1px 10px 1px #555;
+}
+
+.movie-image.col-md-1 {
+  padding-left:0;
+}
+
+.movie-image img {
+  height:auto;
+  width: 80px;
+}
+
+.search-field {
+  border: 1px solid #ddd;
+  margin-bottom:15px;
+  padding:5px;
+}
+
+input.search {
+  box-shadow: none;
+  border:none;
+  width:93%;
+}
+
+.search-film.col-md-3 {
+  padding-right:0;
+}
+
+.container {
+  margin-top:15px;
+}
+
+.add-comment {
+  margin-left:15px;
+  margin-top:35px;
+}
+
+.movie-container {
+  padding-left:15px;
+}
+
+.posts-content2 {
+  padding-top:0px;
+  padding-left:15px;
+}
+
+.post-form2 {
+  padding-bottom:20px;
+  padding-left:15px;
+}
+
+.comment {
+  padding-left:15px;
+}
+
+#like-something:hover {
+  cursor: pointer; 
+  cursor: hand;
+}

@@ -1,0 +1,6 @@
+
+<h4 class="post-author">Oceń film: 
+  <div class="row">
+    <rating ng-model="movie.current_rate" max="10"></rating><span ng-show="movie.current_rate &gt; 0" class="col-md-3">{{movie.current_rate}}</span><span ng-hide="movie.current_rate &gt; 0" class="col-md-3">brak oceny!</span>
+  </div>
+</h4>

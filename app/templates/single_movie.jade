@@ -1,0 +1,32 @@
+.row
+  .movie-image.col-md-1
+    img(ng-src="{{movie.image_url || 'http://placehold.it/80x100' }}")
+  .col-md-6
+    movie-title
+    .row
+      .col-md-3
+        span Ocena widzów: {{ movie.rate }}
+      .col-md-5(like-something='like-something', what-to-like='movie.director', show-like='likeDirector(movie.director)')
+        span Reżyser: {{ movie.director }}
+      .col-md-4
+        span Czas trwania: {{ movie.time }} min
+    .row
+      .col-md-3
+        button.btn.btn-default.btn-xs.show-more(ng-click='open(movie.id)') Pokaż więcej
+  .col-md-3
+    rating(ng-model='movie.rate', max='10')
+  .col-md-2
+    button.btn.btn-primary.btn-sm.add-comment(ng-click='isCollapsed = !isCollapsed') Komentarze
+.row(collapse='isCollapsed')
+  .col-md-offset-1.posts-content2
+    h4.post-author Dyskusja
+    .row.post-form2
+      form(name='post')
+        input.col-md-3(type='text', ng-model='tmp.current_comment', required='required')
+      button.col-md-1.btn.btn-primary.add-post-btn.btn-sm(ng-click='addComment(movie)', ng-disabled='isAddDisabled()') Wyślij
+    ul.posts
+      li.comment.col-md-10(ng-repeat='comment in movie.comments')
+        .row
+          h4.col-md-3 Komentarz # {{$index+1}}
+          h5.post-author {{comment.user_name}}
+        | {{comment.body}}

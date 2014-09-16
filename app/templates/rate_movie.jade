@@ -1,0 +1,6 @@
+h4.post-author Oceń film: 
+  .row
+    rating(ng-model='movie.current_rate', max='10')
+    span(ng-show="movie.current_rate > 0", class="col-md-3") {{movie.current_rate}}
+    span(ng-hide="movie.current_rate > 0", class="col-md-3") brak oceny!
+

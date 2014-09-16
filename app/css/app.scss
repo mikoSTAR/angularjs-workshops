@@ -1,0 +1,19 @@
+@import "bootstrap.css";
+@import "font-awesome.css";
+@import "main.css";
+@import "movie.css";
+@import "movie_list.css";
+
+
+#contentUI {
+  transition: all 1s;
+}
+
+#contentUI.ng-enter #contentMain {
+  -webkit-animation: fadeInDown 1s;
+  animation: fadeInDown 1s;
+}
+
+#contentUI.ng-leave #contentMain {
+  display: none;
+}

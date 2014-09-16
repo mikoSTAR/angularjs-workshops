@@ -1,0 +1,8 @@
+#contentMain.animated
+  .container
+    .col-md-3.pull-right.search-film
+      search-box
+  .container
+    ul.posts
+      li(active-row='active-row', ng-repeat='movie in movies | filter:{title: search.title}')
+        .movie-container(ng-include="'templates/single_movie.html'")

@@ -1,0 +1,38 @@
+#contentMain.container.movie-content.animated
+  .row
+    button.btn.btn-primary.back-btn(ng-click='back()') back
+  .row
+    .col-md-3.pull-left
+      img(ng-src="{{movie.image_url || 'http://placehold.it/200x285' }}")
+    .col-md-6.pull-left
+      .row
+        h1.col-md-9 {{movie.title}}
+        h4.col-md-2.release-year ({{movie.release_date}})
+    .col-md-6.pull-left
+      span.glyphicon.glyphicon-time
+      | {{movie.time}} minut
+    .col-md-6.pull-left
+      h4 reżyseria: {{movie.director}}
+    .col-md-6.pull-left
+      h3 {{movie.rate}} / 10
+    .col-md-6.pull-left
+      .row
+        h4.col-md-3 twoja ocena: 
+        h4(ng-show="movie.rate > 0", class="col-md-3") {{movie.rate}}
+        h4(ng-hide="movie.rate > 0", class="col-md-3") brak oceny!
+      div
+        rating(ng-model='movie.rate', max='10')
+  .row
+    h3 {{movie.description}}
+  .row.posts-content
+    h3 dyskusja
+    .row.post-form
+      form(name='post')
+        input.col-md-3(type='text', ng-model='tmp.current_comment', required='required')
+      button.col-md-1.btn.btn-primary.add-post-btn(ng-click='addComment()', ng-disabled='isAddDisabled()') Dodaj
+    ul.posts
+      li(ng-repeat='comment in movie.comments')
+        .row
+          h4.col-md-2 Komentarz # {{$index+1}}
+          h5.post-author {{comment.user_name}}
+        | {{comment.body}}

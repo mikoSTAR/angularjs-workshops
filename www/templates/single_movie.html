@@ -1,0 +1,42 @@
+
+<div class="row">
+  <div class="movie-image col-md-1"><img ng-src="{{movie.image_url || 'http://placehold.it/80x100' }}"/></div>
+  <div class="col-md-6">
+    <movie-title></movie-title>
+    <div class="row">
+      <div class="col-md-3"><span>Ocena widzów: {{ movie.rate }}</span></div>
+      <div like-something="like-something" what-to-like="movie.director" show-like="likeDirector(movie.director)" class="col-md-5"><span>Reżyser: {{ movie.director }}</span></div>
+      <div class="col-md-4"><span>Czas trwania: {{ movie.time }} min</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button ng-click="open(movie.id)" class="btn btn-default btn-xs show-more">Pokaż więcej</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <rating ng-model="movie.rate" max="10"></rating>
+  </div>
+  <div class="col-md-2">
+    <button ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm add-comment">Komentarze</button>
+  </div>
+</div>
+<div collapse="isCollapsed" class="row">
+  <div class="col-md-offset-1 posts-content2">
+    <h4 class="post-author">Dyskusja</h4>
+    <div class="row post-form2">
+      <form name="post">
+        <input type="text" ng-model="tmp.current_comment" required="required" class="col-md-3"/>
+      </form>
+      <button ng-click="addComment(movie)" ng-disabled="isAddDisabled()" class="col-md-1 btn btn-primary add-post-btn btn-sm">Wyślij</button>
+    </div>
+    <ul class="posts">
+      <li ng-repeat="comment in movie.comments" class="comment col-md-10">
+        <div class="row">
+          <h4 class="col-md-3">Komentarz # {{$index+1}}</h4>
+          <h5 class="post-author">{{comment.user_name}}</h5>
+        </div>{{comment.body}}
+      </li>
+    </ul>
+  </div>
+</div>
